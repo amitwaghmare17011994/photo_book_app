@@ -14,7 +14,7 @@ const SplashScreen = (props: any) => {
     (async () => {
       setTimeout(async() => {
         const auth=await retrieveData('auth')        
-        navigation.navigate(auth? ROUTES.HOME_SCREEN:ROUTES.PHONE_VALIDATION_SCREEN)
+        navigation.replace(auth? ROUTES.HOME_SCREEN:ROUTES.PHONE_VALIDATION_SCREEN)
       }, 1000)
     })()
   }, [])

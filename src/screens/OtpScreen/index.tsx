@@ -21,7 +21,7 @@ const OtpScreen = (props: any) => {
       setShowLoader(false)
       if (isVerified) {
        await storeData('auth', { phoneNumber: params.phoneNumber })
-        navigation.navigate(ROUTES.HOME_SCREEN)
+        navigation.replace(ROUTES.HOME_SCREEN)
         return
       }
       throw 'Wrong OTP entered'

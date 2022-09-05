@@ -4,8 +4,11 @@ import SafeArea from '../../components/atoms/SafeArea'
 import { launchCamera, launchImageLibrary } from 'react-native-image-picker';
 import { uploadFiles } from '../../services/upload';
 import { HStack, Spinner } from 'native-base';
+import { removeData } from '../../storage/auth';
+import { ROUTES } from '../../constants';
 
-const HomeScreen = () => {
+const HomeScreen = (props: any) => {
+  const { navigation } = props
   const [selectedImages, setSelectedImages] = useState([])
   const [uploadingImage, setUploadingImage] = useState(null)
   const [uploadedImages, setUploadedImages] = useState([])
@@ -50,7 +53,7 @@ const HomeScreen = () => {
           ...isUploaded ? {
             borderColor: 'green',
             borderWidth: 2,
-            borderRadius:10
+            borderRadius: 10
           } : {}
         }}
       />
@@ -87,12 +90,20 @@ const HomeScreen = () => {
 
       <Button title='Load Image' onPress={getPhotos} />
       <Button title='Upload Files' onPress={onUploadFiles} />
+      <Button
+        title='Logout'
+        onPress={async () => {
+          await removeData('auth');
+          navigation.replace(ROUTES.PHONE_VALIDATION_SCREEN)
+
+        }}
+      />
       <FlatList
         data={selectedImages}
         renderItem={renderImage}
         numColumns={3}
         columnWrapperStyle={style.row}  // space them out evenly
-        style={{marginBottom:100, }}
+        style={{ marginBottom: 100, }}
       />
 
     </SafeArea>
