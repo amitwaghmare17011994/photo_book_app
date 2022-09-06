@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from 'react'
-import { Button, Image, View, ScrollView, Text, FlatList, StyleSheet } from 'react-native'
-import SafeArea from '../../components/atoms/SafeArea'
-import { launchCamera, launchImageLibrary } from 'react-native-image-picker';
+import { Column, Divider, HStack, Image, Row, Spinner } from 'native-base';
+import React, { useState } from 'react';
+import { Button, StyleSheet, View } from 'react-native';
+import { launchImageLibrary } from 'react-native-image-picker';
+import SafeArea from '../../components/atoms/SafeArea';
+import TextView from '../../components/atoms/Text';
 import { uploadFiles } from '../../services/upload';
-import { HStack, Spinner } from 'native-base';
-import { removeData } from '../../storage/auth';
-import { ROUTES } from '../../constants';
 
 const HomeScreen = (props: any) => {
   const { navigation } = props
@@ -82,12 +81,37 @@ const HomeScreen = (props: any) => {
     }
   }
 
-  console.log(uploadedImages);
 
   return (
     <SafeArea>
 
+      <Row height={140} paddingLeft={3} alignItems={'center'}>
+        <Button title='Make Order' onPress={getPhotos} />
+      </Row>
+      <Divider />
 
+      <Column alignItems={'center'} top={'40%'}>
+        <Image
+          source={require('../../assets/images/emptyOrders.png')}
+          alt={'logo'}
+        />
+        <TextView
+          text={`You haven't created an order yet`}
+          style={{ fontSize: 16, marginTop: 20 }}
+        />
+        <TextView
+          text={'Make a new order'}
+          style={{
+            fontSize: 20, 
+            marginTop: 20,
+            borderBottomWidth: 1,
+            borderColor: "blue",
+          }}
+          color={'blue'}
+        />
+      </Column>
+
+      {/* 
       <Button title='Load Image' onPress={getPhotos} />
       <Button title='Upload Files' onPress={onUploadFiles} />
       <Button
@@ -104,7 +128,7 @@ const HomeScreen = (props: any) => {
         numColumns={3}
         columnWrapperStyle={style.row}  // space them out evenly
         style={{ marginBottom: 100, }}
-      />
+      /> */}
 
     </SafeArea>
   )

@@ -1,10 +1,10 @@
-import { View, Text } from 'react-native'
-import React from 'react'
+import React from 'react';
+import { Text } from 'react-native';
 
 const TextView = (props: any) => {
-    const {text,color,style}=props;
+    const {text,color,style,onPress}=props;
     return (
-        <Text style={{ color: color || 'black',fontSize: 16 , ...(props.style || {}) }}>{props.text}</Text>
+        <Text onPress={onPress} style={{ color: color || 'black',fontSize: 16 , ...(props.style || {}) }}>{props.text}</Text>
     )
 }
 

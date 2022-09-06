@@ -2,6 +2,7 @@ import { post } from "..";
 
 export const sendOTP = async (phoneNumber: string) => {
     try {
+         
         const res = await post('send_otp', { phoneNumber: phoneNumber }) as { url: string }
         return res;
     } catch (error) {

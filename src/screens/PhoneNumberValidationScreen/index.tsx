@@ -43,7 +43,7 @@ const PhoneNumberValidationScreen = (props: any) => {
       setShowLoader(false)
 
       if (res.otp) {
-        navigation.navigate(ROUTES.OTP_SCREEN, { otp: res.otp,phoneNumber })
+        navigation.replace(ROUTES.OTP_SCREEN, { otp: res.otp,phoneNumber })
       }
     } catch (error) {
 
