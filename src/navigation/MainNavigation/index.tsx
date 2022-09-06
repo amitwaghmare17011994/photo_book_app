@@ -9,18 +9,19 @@ import { NativeBaseProvider, extendTheme } from 'native-base';
 import OtpScreen from '../../screens/OtpScreen';
 import PhoneNumberValidationScreen from '../../screens/PhoneNumberValidationScreen';
 import { ROUTES } from '../../constants';
+import NewOrderScreen from '../../screens/NewOrderScreen';
 
 
 const Stack = createNativeStackNavigator();
 
 const MainNavigation = () => {
-   
+
 
   const theme = extendTheme({
     colors: {
-       purple: {
+      purple: {
         'primary': '#6a1b9a',
-       
+
       }
     },
   });
@@ -43,6 +44,14 @@ const MainNavigation = () => {
           <Stack.Screen name={ROUTES.OTP_SCREEN} component={OtpScreen} options={{
             headerShown: false,
           }} />
+
+
+          <Stack.Screen name={ROUTES.NEW_ORDER_SCREEN} component={NewOrderScreen} options={{
+            headerShown: false,
+          }} />
+
+
+
 
 
 
